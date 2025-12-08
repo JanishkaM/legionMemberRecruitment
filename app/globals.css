@@ -1,0 +1,140 @@
+/* app/globals.css - FIXED VERSION */
+
+/* ⚠️ IMPORTANT: @import must be at the very top, before @tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --cyan-primary: #00d9ff;
+  --cyan-glow: rgba(0, 217, 255, 0.3);
+  --dark-bg: #0a0e14;
+  --panel-bg: rgba(10, 20, 30, 0.85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: #e0e0e0;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hexagon pattern background */
+.hex-pattern {
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 217, 255, 0.03) 40px, rgba(0, 217, 255, 0.03) 41px),
+    repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(0, 217, 255, 0.03) 40px, rgba(0, 217, 255, 0.03) 41px),
+    repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(0, 217, 255, 0.03) 40px, rgba(0, 217, 255, 0.03) 41px);
+}
+
+/* Scan line effect */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(transparent, var(--cyan-primary), transparent);
+  opacity: 0.1;
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Cyan glow effect */
+.cyan-glow {
+  text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow);
+}
+
+/* Corner decorations */
+.corner-deco {
+  position: relative;
+}
+
+.corner-deco::before,
+.corner-deco::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cyan-primary);
+}
+
+.corner-deco::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-deco::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-primary);
+  border-radius: 4px;
+}
+
+/* Panel styles */
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Button hover effect */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 217, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
