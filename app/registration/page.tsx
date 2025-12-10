@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { ChevronRight, ChevronLeft, Hexagon, Terminal, User, Hash, Briefcase, Gamepad2, Shield, Phone, MessageCircle, Palette } from 'lucide-react';
 import Link from 'next/link';
+import Header from '../components/Header';
 
 interface FormData {
   email: string;
@@ -261,10 +262,10 @@ export default function RegistrationPage() {
         <div className="scanline" />
         <div className="h-full flex flex-col items-center justify-center text-center space-y-6 animate-in zoom-in duration-500 py-12">
           <Hexagon size={60} className="md:w-20 md:h-20 text-cyan-400 animate-spin-slow" strokeWidth={1} />
-          <h2 className="text-3xl md:text-4xl font-orbitron font-bold text-white tracking-widest uppercase glow-text">
+          <h2 className="text-3xl md:text-4xl font-orbitron font-bold text-white tracking-widest uppercase glow-text mb-7 mt-3">
             Access Granted
           </h2>
-          <p className="text-cyan-200 font-mono text-base md:text-lg border-l-4 border-cyan-500 pl-4 bg-cyan-900/20 p-4 max-w-md skew-x-[-10deg]">
+          <p className="text-cyan-200 font-mono text-base md:text-lg border-l-4 border-cyan-500 bg-cyan-900/20 p-4 max-w-md skew-x-[-10deg] mx-4 md:mx-0">
             <span className="skew-x-10 block">
               Welcome to the Legion, <span className="text-white font-bold">{formData.fullName}</span>. 
               <br/>
@@ -273,7 +274,7 @@ export default function RegistrationPage() {
           </p>
           <Link 
             href="/dashboard"
-            className="mt-8 px-6 py-2 md:px-8 md:py-3 bg-cyan-600 hover:bg-cyan-500 text-black font-bold font-orbitron tracking-wider clip-path-button transition-all transform hover:scale-105 flex items-center"
+            className="mt-12 px-6 py-2 md:px-8 md:py-3 bg-cyan-600 hover:bg-cyan-500 text-black font-bold font-orbitron tracking-wider clip-path-button transition-all transform hover:scale-105 flex items-center"
           >
             RETURN TO DASHBOARD
           </Link>
@@ -296,7 +297,7 @@ export default function RegistrationPage() {
       onMouseEnter={() => setActiveField(name)}
       onMouseLeave={() => setActiveField(null)}
     >
-      <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-1 pl-2 uppercase">
+      <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
         {activeField === name && <span className="animate-pulse mr-2">►</span>}
         {label}
       </label>
@@ -327,24 +328,13 @@ export default function RegistrationPage() {
       <div className="scanline" />
       
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 panel border-b border-cyan-400/30">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/dashboard" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 border-2 border-cyan-400 rounded transform rotate-45" />
-            <span className="text-xs text-gray-400">LEGION SOCIETY</span>
-          </Link>
-          <div className="text-right">
-            <div className="text-xs text-cyan-400">REGISTRATION SYSTEM</div>
-            <div className="text-xs text-green-400">SECURE CONNECTION</div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="max-w-4xl mx-auto">
           <div className="relative w-full pointer-events-auto">
             {/* 3D Container Header */}
-            <div className="flex items-center justify-between mb-4 md:mb-8">
+            <div className="flex items-center justify-between mb-12 md:mb-8">
               <Link 
                 href="/dashboard"
                 className="text-cyan-600 hover:text-cyan-400 transition-colors flex items-center font-orbitron text-xs md:text-sm"
@@ -355,7 +345,7 @@ export default function RegistrationPage() {
                 <h1 className="text-xl md:text-3xl font-black font-orbitron text-white tracking-widest uppercase">
                   New Operative
                 </h1>
-                <div className="h-0.5 w-full bg-gradient-to-l from-cyan-500 to-transparent"></div>
+                <div className="h-0.5 w-full bg-linear-to-l from-cyan-500 to-transparent"></div>
               </div>
             </div>
 
@@ -363,7 +353,7 @@ export default function RegistrationPage() {
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 relative z-10 max-h-[70vh] overflow-y-auto overflow-x-hidden px-4 md:px-8 pr-2">
               
               {/* Section 1: Basic Information */}
-              <div className="space-y-4">
+              <div className="grid gap-7">
                 <h3 className="text-cyan-400 font-orbitron text-sm md:text-base tracking-wider border-b border-cyan-900 pb-2">BASIC INFORMATION</h3>
                 
                 {renderInputGroup(Terminal, "Email *", "email", "email", "your.email@example.com")}
@@ -371,7 +361,7 @@ export default function RegistrationPage() {
                 {renderInputGroup(User, "Full Name *", "fullName", "text", "Expand Initials")}
                 
                 <div className="group relative">
-                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-1 pl-2 uppercase">
+                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
                     Faculty / Department *
                   </label>
                   <div className="flex items-center bg-black/80 backdrop-blur-md border-l-4 border-gray-700 hover:border-cyan-500 transition-colors">
@@ -414,7 +404,7 @@ export default function RegistrationPage() {
                 {renderInputGroup(Hash, "Student No *", "studentNo", "text", "XX / 20XX / XXXXX")}
 
                 <div className="group relative">
-                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-1 pl-2 uppercase">
+                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
                     Year *
                   </label>
                   <div className="flex items-center bg-black/80 backdrop-blur-md border-l-4 border-gray-700 hover:border-yellow-500 transition-colors">
@@ -446,8 +436,8 @@ export default function RegistrationPage() {
               </div>
 
               {/* Section 2: E-Sports and Digital Media */}
-              <div className="space-y-4 border-t border-cyan-900 pt-4">
-                <h3 className="text-yellow-400 font-orbitron text-sm md:text-base tracking-wider">E-SPORTS & DIGITAL MEDIA</h3>
+              <div className="grid gap-7 border-t border-cyan-900 pt-12">
+                <h3 className="text-yellow-400 font-orbitron text-sm md:text-base tracking-wider border-b border-yellow-900 pb-2">E-SPORTS & DIGITAL MEDIA</h3>
                 
                 <div className="group relative">
                   <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-2 pl-2 uppercase">
@@ -455,7 +445,7 @@ export default function RegistrationPage() {
                   </label>
                   <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700">
                     {['E - sports (Online Competitive multiplayer)', 'Digital creative platform (Photoshop, Illustrator,3D blender, Arduino, etc.)'].map(platform => (
-                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer">
+                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer mb-3">
                         <input
                           type="checkbox"
                           checked={formData.digitalPlatform.includes(platform)}
@@ -469,12 +459,12 @@ export default function RegistrationPage() {
                 </div>
 
                 <div className="group relative">
-                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-2 pl-2 uppercase">
+                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
                     Gaming Platforms You Use
                   </label>
                   <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700">
                     {['PC', 'Mobile'].map(platform => (
-                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer">
+                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer mb-3">
                         <input
                           type="checkbox"
                           checked={formData.gamingPlatform.includes(platform)}
@@ -485,7 +475,7 @@ export default function RegistrationPage() {
                       </label>
                     ))}
                     <div className="flex items-center gap-2">
-                      <label className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer">
+                      <label className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer mb-3">
                         <input
                           type="checkbox"
                           checked={formData.gamingPlatform.includes('__other_option__')}
@@ -512,17 +502,17 @@ export default function RegistrationPage() {
                 {renderInputGroup(Gamepad2, "E-sports You Want to Play (Optional)", "esportFuture", "text", "Optional", false)}
 
                 <div className="group relative">
-                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-2 pl-2 uppercase">
+                  <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
                     Digital Creative Platforms You&apos;re Familiar With
                   </label>
-                  <div className="space-y-2 bg-black/40 p-3 border-l-4 border-purple-700 max-h-48 overflow-y-auto">
+                  <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700 max-h-48 overflow-y-auto">
                     {['Graphic Design', '3D/2D Animation', 'Game Developing', 'Social Media Advertising', 'Audio Editing', 'Creative Writing', 'Film Making', 'Photography', 'Software Developing', 'Video Editing', 'Web Developing'].map(platform => (
-                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-purple-400 cursor-pointer">
+                      <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer mb-3">
                         <input
                           type="checkbox"
                           checked={formData.creativePlatforms.includes(platform)}
                           onChange={(e) => handleCheckboxChange('creativePlatforms', platform, e.target.checked)}
-                          className="w-4 h-4 bg-black border-purple-600 text-purple-500 focus:ring-purple-500"
+                          className="w-4 h-4 bg-black border-cyan-600 text-cyan-500 focus:ring-cyan-500"
                         />
                         <span className="font-mono">{platform}</span>
                       </label>
@@ -539,7 +529,7 @@ export default function RegistrationPage() {
                 </div>
               )}
 
-              <div className="pt-4 md:pt-8 flex justify-end mr-2">
+              <div className="pt-4 md:pt-8 flex justify-end mr-2 mt-2">
                 <button 
                   type="submit"
                   disabled={isSubmitting}
@@ -557,7 +547,6 @@ export default function RegistrationPage() {
                   </span>
                 </button>
               </div>
-
             </form>
           </div>
         </div>

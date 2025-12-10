@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center hex-pattern relative overflow-hidden">
       <div className="scanline" />
-      
+
       {/* Hexagon background */}
       <div className="absolute inset-0 opacity-20">
         {[...Array(50)].map((_, i) => (
@@ -94,7 +94,7 @@ export default function Home() {
             </div>
             <div className="h-2 bg-gray-800 rounded overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-cyan-500 to-cyan-300 transition-all duration-300"
+                className="h-full bg-linear-to-r from-cyan-500 to-cyan-300 transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>

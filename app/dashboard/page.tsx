@@ -4,6 +4,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
+import Header from '../components/Header'
+import { FolderLock, TriangleAlert, X, Zap } from 'lucide-react'
 
 interface Project {
   id: number
@@ -53,7 +55,7 @@ const projects: Project[] = [
   {
     id: 3,
     name: 'VANGUARD',
-    image: '/projects/van2.jpeg',
+    image: '/projects/van2.png',
     description: 'The Inter-University Esports Championship is a collaborative event organized by the Legion Society of the University of Kelaniya and Mora Esports of the University of Moratuwa. This championship aims to unite competitive gamers from multiple universities to battle in top-tier esports titles. The event focuses on building a strong inter-university esports ecosystem while giving players the opportunity to showcase their skills, teamwork, and competitive spirit on a national stage. Through this partnership, the two leading university esports communities aim to elevate the standard and recognition of esports in Sri Lanka.',
     status: 'UP COMING',
     classification: 'LEVEL 1',
@@ -90,36 +92,10 @@ export default function Dashboard() {
   return (
     <main className="min-h-screen hex-pattern relative">
       <div className="scanline" />
-      
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 panel border-b border-cyan-400/30">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 border-2 border-cyan-400 rounded transform rotate-45" />
-            <span className="text-xs text-gray-400">LOC: DALUGAMA, KELANIYA</span>
-          </div>
-          {/* <nav className="hidden md:flex items-center space-x-6 text-sm">
-            <Link href="/dashboard" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-              DASHBOARD
-            </Link>
-            <Link href="/missions" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              MISSIONS
-            </Link>
-            <Link href="/intel" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              INTEL
-            </Link>
-            <Link href="/archive" className="text-gray-400 hover:text-cyan-400 transition-colors">
-              ARCHIVE
-            </Link>
-          </nav> */}
-          <div className="text-right">
-            <div className="text-xs text-cyan-400">SYSTEM IDLE</div>
-            <div className="text-xs text-green-400">SECURE CONNECTION ESTABLISHED</div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      <div className="container mx-auto px-6 pt-32 pb-16">
+      <div className="container mx-auto px-3 pt-32 pb-16">
         {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Mission Brief */}
@@ -128,24 +104,23 @@ export default function Dashboard() {
               <h2 className="text-2xl font-bold text-cyan-400 mb-6 tracking-wider">
                 MISSION
               </h2>
-              <div className="space-y-4 text-sm">
+              <div className="space-y-4">
                 {/* <p>
                   The <span className="text-cyan-400 font-semibold">Legion Club</span> is the university's premier tactical gaming collective.
                 </p> */}
-                <p className="text-gray-400">
-                  The mission of <span className="text-cyan-400 font-semibold">Legions</span> is to provide an opportunity for university undergraduates to train, enhance, and share the skills that 
-                   will assist them in digital creative and 
-                   competitive E-sport platforms to make an 
-                   ethical, professional community.
+                <p className="text-gray-400 mb-5">
+                  The mission of <span className="text-cyan-400 font-semibold">Legions</span> is to provide an opportunity for university undergraduates to train, enhance, and share the skills that
+                  will assist them in digital creative and
+                  competitive E-sport platforms to make an
+                  ethical, professional community.
                 </p>
-                <div className="pt-4 border-t border-cyan-400/30">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-cyan-400">⚡ STATUS:</span>
-                    <span className="text-green-400">RECRUITING</span>
-                  </div>
+                <div className="pt-4 border-t text-xs border-cyan-400/30">
                   <div className="flex items-center justify-between">
-                    <span className="text-cyan-400">👥 AGENTS:</span>
-                    <span>87</span>
+                    <div className="text-cyan-400 flex items-center gap-1">
+                      <Zap className='inline-block mb-2 md:mb-0 size-4' />
+                      <span>STATUS:</span>
+                    </div>
+                    <div className="text-green-400">RECRUITING</div>
                   </div>
                 </div>
               </div>
@@ -206,13 +181,14 @@ export default function Dashboard() {
                   <div className="text-xs text-gray-500">LABORATORY 4</div>
                 </div> */}
 
-                <p className="text-gray-400">
-                  To create an island-wide digital creative and competitive E-sport platform where all the university undergraduates can share 
+                <p className="text-gray-400 mb-5">
+                  To create an island-wide digital creative and competitive E-sport platform where all the university undergraduates can share
                   and improve their skills.
                 </p>
                 <div className="pt-4 border-t border-cyan-400/30">
-                  <div className="text-xs text-yellow-400 animate-pulse">
-                    ⚠️ ALERT: REGISTRATION CLOSING SOON.
+                  <div className="text-xs flex items-center gap-2 text-yellow-400 animate-pulse">
+                    <TriangleAlert className='inline-block size-4' />
+                    <span>ALERT: REGISTRATION CLOSING SOON.</span>
                   </div>
                 </div>
               </div>
@@ -221,42 +197,53 @@ export default function Dashboard() {
         </div>
 
         {/* Classified Projects */}
-        <div className="mt-12">
-          <div className="panel p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-cyan-400 tracking-wider flex items-center">
-                <span className="mr-2">🔒</span>
-                CLASSIFIED PROJECT ARCHIVE
+        <div className="mt-21">
+          <div className="panel p-3">
+            <div className="md:flex text-center md:text-start items-center justify-between mt-3 mb-6">
+              <h2 className="text-xl md:text-2xl flex flex-col md:flex-row items-center font-bold text-cyan-400 tracking-wider">
+                <FolderLock className='inline-block mb-2 md:mb-0 size-8 md:size-6' />
+                <span className="ml-2">CLASSIFIED PROJECT ARCHIVE</span>
               </h2>
-              <span className="text-xs text-cyan-400">SECURE ACCESS: LEVEL 4</span>
+              <span className="text-xs text-end text-cyan-400">SECURE ACCESS: LEVEL 4</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {projects.map((project) => (
-                <div 
+                <div
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="panel p-4 hover:bg-cyan-400/10 transition-all cursor-pointer group corner-deco"
+                  className="panel  hover:bg-cyan-400/10 transition-all cursor-pointer group corner-deco"
                 >
-                  <div className="aspect-video bg-gray-900 mb-3 rounded overflow-hidden relative">
-                    <Image 
+                  <div className="aspect-square bg-gray-900 mb-3  overflow-hidden relative">
+                    <Image
                       src={project.image}
                       alt={project.name}
                       fill
-                      className="object-cover"
+                      className="object-cover w-full h-full"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-purple-500/10 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-r from-cyan-400/20 via-purple-500/10 to-transparent" />
                     <div className="absolute top-2 right-2 text-xs text-cyan-400 bg-black/50 px-2 py-1 rounded">
-                      IMG_{String(project.id).padStart(2, '0')}
+                      IMG_{String(project.name).substring(0, 10)}
                     </div>
                     <div className="absolute bottom-2 left-2 text-xs text-yellow-400 bg-black/50 px-2 py-1 rounded">
                       {project.classification}
                     </div>
                   </div>
-                  <div className="text-sm font-bold text-cyan-400 group-hover:text-cyan-300">
-                    {project.name}
+                  <div className='p-3'>
+                    <div className="text-sm font-bold text-cyan-400 group-hover:text-cyan-300 mb-1">
+                      {project.name}
+                    </div>
+                    <div className="text-sm text-gray-400 group-hover:text-cyan-100">
+                      {String(project.description).substring(0, 100)}...
+                    </div>
+                    {
+                      project.status === 'DONE' ? (
+                        <div className="text-xs text-green-400 mt-3">DONE</div>
+                      ) : (
+                        <div className="text-xs text-gray-400 mt-3">UPCOMING</div>
+                      )
+                    }
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">{project.status}</div>
                 </div>
               ))}
             </div>
@@ -274,11 +261,11 @@ export default function Dashboard() {
 
       {/* Project Modal */}
       {selectedProject && (
-        <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-100 flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
-          <div 
+          <div
             className="panel max-w-4xl w-full max-h-[90vh] overflow-y-auto corner-deco relative"
             onClick={(e) => e.stopPropagation()}
           >
@@ -287,21 +274,20 @@ export default function Dashboard() {
               onClick={() => setSelectedProject(null)}
               className="absolute top-4 right-4 text-cyan-400 hover:text-cyan-300 text-2xl z-10 w-10 h-10 flex items-center justify-center panel"
             >
-              ✕
+              <X />
             </button>
 
             {/* Project Image */}
             <div className="relative bg-gray-900 overflow-hidden">
-              <Image 
+              <Image
                 src={selectedProject.image}
                 alt={selectedProject.name}
                 width={1920}
                 height={1080}
                 className="w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 80vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 via-purple-500/20 to-transparent" />
-              <div className="absolute top-4 left-4 space-y-2 z-10">
+              <div className="absolute inset-0 bg-linear-to-br from-cyan-400/30 via-purple-500/20 to-transparent" />
+              <div className="grid absolute top-4 left-4 gap-2 z-10">
                 <div className="text-xs text-cyan-400 bg-black/70 px-3 py-1 rounded inline-block">
                   CLASSIFICATION: {selectedProject.classification}
                 </div>
@@ -316,7 +302,7 @@ export default function Dashboard() {
               <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2 tracking-wider cyan-glow">
                 PROJECT: {selectedProject.name}
               </h2>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                 <div>
                   <span className="text-gray-500">TEAM:</span>
@@ -351,9 +337,9 @@ export default function Dashboard() {
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-cyan-400/30 flex justify-between items-center">
+              <div className="mt-8 pt-6 border-t border-cyan-400/30 flex flex-col md:flex-row gap-7 justify-between items-center">
                 <div className="text-xs text-gray-500">
-                  ACCESS GRANTED: {new Date().toLocaleString('en-US', { 
+                  ACCESS GRANTED: {new Date().toLocaleString('en-US', {
                     hour12: false,
                     year: 'numeric',
                     month: '2-digit',
