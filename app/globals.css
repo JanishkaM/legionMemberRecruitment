@@ -12,6 +12,7 @@
   --cyan-glow: rgba(0, 217, 255, 0.3);
   --dark-bg: #0a0e14;
   --panel-bg: rgba(10, 20, 30, 0.85);
+  --accent: #22d3ee;
 }
 
 * {

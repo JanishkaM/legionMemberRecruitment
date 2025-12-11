@@ -1,8 +1,8 @@
-// app/page.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Loading from './loading'
 
 export default function Home() {
   const router = useRouter()
@@ -62,10 +62,10 @@ export default function Home() {
           </div>
         </div>
 
-        <h1 className="text-6xl font-bold mb-4 tracking-wider cyan-glow">
+        <h1 className="text-4xl md:text-7xl font-bold mb-4 tracking-wider cyan-glow">
           #CREATIVE FORCE
         </h1>
-        <p className="text-cyan-400 text-xl mb-12 tracking-widest">
+        <p className="text-cyan-400 text-md md:text-lg mb-12 tracking-widest">
           UNIVERSITY OF KELANIYA
         </p>
 
@@ -86,7 +86,7 @@ export default function Home() {
         </button>
 
         {/* Progress bar */}
-        <div className="w-96 max-w-full mx-auto">
+        <div className="w-64 sm:w-96 max-w-full mx-auto">
           <div className="panel p-4 corner-deco">
             <div className="flex justify-between mb-2 text-sm">
               <span className="text-cyan-400">SYSTEM INTEGRITY:</span>

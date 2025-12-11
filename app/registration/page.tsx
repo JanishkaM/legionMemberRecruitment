@@ -505,7 +505,7 @@ export default function RegistrationPage() {
                   <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
                     Digital Creative Platforms You&apos;re Familiar With
                   </label>
-                  <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700 max-h-48 overflow-y-auto">
+                  <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700 overflow-y-auto">
                     {['Graphic Design', '3D/2D Animation', 'Game Developing', 'Social Media Advertising', 'Audio Editing', 'Creative Writing', 'Film Making', 'Photography', 'Software Developing', 'Video Editing', 'Web Developing'].map(platform => (
                       <label key={platform} className="flex items-center gap-2 text-white text-sm hover:text-cyan-400 cursor-pointer mb-3">
                         <input
