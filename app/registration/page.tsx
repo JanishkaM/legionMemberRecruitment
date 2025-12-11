@@ -350,7 +350,7 @@ export default function RegistrationPage() {
             </div>
 
             {/* Form Body */}
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 relative z-10 max-h-[70vh] overflow-y-auto overflow-x-hidden px-4 md:px-8 pr-2">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 relative z-10 overflow-y-auto overflow-x-hidden px-4 md:px-8 pr-2">
               
               {/* Section 1: Basic Information */}
               <div className="grid gap-7">
@@ -503,7 +503,7 @@ export default function RegistrationPage() {
 
                 <div className="group relative">
                   <label className="block text-cyan-400 text-[10px] md:text-xs font-orbitron tracking-widest mb-3 pl-2 uppercase">
-                    Digital Creative Platforms You&apos;re Familiar With
+                    Digital Creative Platforms You&apos;re Familiar/Interested With
                   </label>
                   <div className="space-y-2 bg-black/40 p-3 border-l-4 border-cyan-700 overflow-y-auto">
                     {['Graphic Design', '3D/2D Animation', 'Game Developing', 'Social Media Advertising', 'Audio Editing', 'Creative Writing', 'Film Making', 'Photography', 'Software Developing', 'Video Editing', 'Web Developing'].map(platform => (
