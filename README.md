@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Legion Member Recruitment Portal
+
+Recruitment and showcase site for the Legion Society of the University of Kelaniya. The app delivers a cinematic landing page, a dashboard with mission/vision highlights and archived projects, and a registration form that submits directly to a Google Form.
+
+## Features
+- Neon landing screen with progress indicator and "INITIALIZE" CTA that routes to the dashboard.
+- Dashboard with mission and vision sections, quick stats, and a classified project archive with image cards and modal detail views.
+- Registration form that writes to Google Forms via a hidden iframe, with client-side validation for required choices and guardrails for "Other" inputs.
+- UX flourishes: hex-pattern background, scanline overlay, hover states, and responsive layout tuned for desktop and mobile.
+
+## Tech Stack
+- Next.js 16 (App Router) on React 19 and TypeScript.
+- Tailwind CSS 4 for styling plus custom CSS in `app/globals.css`.
+- Icons from `lucide-react`.
 
 ## Getting Started
+1) Install dependencies (Node 18+ recommended for Next 16):
 
-First, run the development server:
+```bash
+npm install
+```
+
+2) Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3) Production build and start:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+4) Lint:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Paths
+- Landing: `app/page.tsx`
+- Dashboard: `app/dashboard/page.tsx`
+- Registration form: `app/registration/page.tsx`
+- Shared header: `app/components/Header.tsx`
+- Global styles/theme tokens: `app/globals.css`
+- Project assets: `public/projects/`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Registration Form Configuration
+- The form posts to Google Forms at `https://docs.google.com/forms/d/e/1FAIpQLSddi6wjmBR90h4dLS-2bWuyRS9wKK14zoOR1cbHO28Q4EjW1g/formResponse` using a hidden iframe to avoid CORS issues.
+- Field-to-entry mappings live in `app/registration/page.tsx` (see the `appendField` calls). Update the entry IDs if the Google Form changes.
+- Validation: at least one digital platform is required, "Other" selections require text detail, and department/gaming platform toggles enforce their companion inputs.
 
-## Deploy on Vercel
+## Updating the Project Archive
+- Projects are defined in the `projects` array inside `app/dashboard/page.tsx` with `name`, `image`, `description`, `status`, `classification`, `team`, `year`, and `objectives`.
+- Add or replace images under `public/projects/` and reference them via the `image` path on each project entry.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Styling Notes
+- Core palette and effects (hex grid, scanline, corner accents, glow text) are defined in `app/globals.css`. Tailwind utilities are available across `app/**` and component files.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+- Build with `npm run build` and serve with `npm start`. No runtime environment variables are required for the current setup.
