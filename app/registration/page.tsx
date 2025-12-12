@@ -313,7 +313,7 @@ export default function RegistrationPage() {
           onFocus={() => setActiveField(name)}
           placeholder={placeholder}
           required={isRequired}
-          className="w-full bg-transparent border-none text-white text-sm md:text-base placeholder-gray-600 focus:ring-0 font-mono py-2 md:py-3 px-2 outline-none select-text pointer-events-auto"
+          className="w-full bg-transparent border-none text-white text-md md:text-base placeholder-gray-600 focus:ring-0 font-mono py-2 md:py-3 px-2 outline-none select-text pointer-events-auto"
         />
         {/* Decorative elements */}
         {activeField === name && (
@@ -450,7 +450,7 @@ export default function RegistrationPage() {
                           type="checkbox"
                           checked={formData.digitalPlatform.includes(platform)}
                           onChange={(e) => handleCheckboxChange('digitalPlatform', platform, e.target.checked)}
-                          className="w-4 h-4 bg-black border-cyan-600 text-cyan-500 focus:ring-cyan-500"
+                          className="w-4 h-4 text-md bg-black border-cyan-600 text-cyan-500 focus:ring-cyan-500"
                         />
                         <span className="font-mono">{platform}</span>
                       </label>
@@ -469,7 +469,7 @@ export default function RegistrationPage() {
                           type="checkbox"
                           checked={formData.gamingPlatform.includes(platform)}
                           onChange={(e) => handleCheckboxChange('gamingPlatform', platform, e.target.checked)}
-                          className="w-4 h-4 bg-black border-cyan-600 text-cyan-500 focus:ring-cyan-500"
+                          className="w-4 h-4 bg-black text-md border-cyan-600 text-cyan-500 focus:ring-cyan-500"
                         />
                         <span className="font-mono">{platform}</span>
                       </label>
@@ -512,7 +512,7 @@ export default function RegistrationPage() {
                           type="checkbox"
                           checked={formData.creativePlatforms.includes(platform)}
                           onChange={(e) => handleCheckboxChange('creativePlatforms', platform, e.target.checked)}
-                          className="w-4 h-4 bg-black border-cyan-600 text-cyan-500 focus:ring-cyan-500"
+                          className="w-4 h-4 bg-black text-md border-cyan-600 text-cyan-500 focus:ring-cyan-500"
                         />
                         <span className="font-mono">{platform}</span>
                       </label>
